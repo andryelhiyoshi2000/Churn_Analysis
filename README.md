@@ -40,12 +40,64 @@ O objetivo geral deste trabalho é desenvolver um modelo preditivo capaz de iden
 Estas visualizações são fundamentais para nossa compreensão inicial dos padrões de dados e irão informar a seleção de características na modelagem preditiva. A discrepância nas taxas de churn entre as diferentes categorias dessas variáveis sugere áreas potenciais de foco para a retenção de clientes. No próximo estágio, iremos investigar se essas diferenças são estatisticamente significativas e como elas podem ser aplicadas ao desenvolvimento de um modelo preditivo eficaz.
 ## 02.1.2 - Teste de Chi-Quadrado de Independência
     O teste de chi-quadrado de independência compara a distribuição observada das categorias com a distribuição esperada se as duas variáveis fossem independentes. O teste calcula uma estatística de chi-quadrado que segue a distribuição chi-quadrado sob a hipótese nula de que não há associação entre as variáveis. Um p-valor baixo sugere que devemos rejeitar a hipótese nula, indicando que há uma associação estatisticamente significativa entre as variáveis.
+
+### Resultados e Conclusões:
+
+* __Geografia__:
+    Este resultado sugere que há uma associação significativa entre a geografia e a saída dos clientes. Os diferentes países têm taxas de churn significativamente diferentes.
+
+* __Gênero__:
+    Assim como com a geografia, o gênero tem uma associação significativa com a saída dos clientes. Isso pode indicar que um gênero tem maior probabilidade de sair do que o outro.
+
+* __Tem Cartão de Crédito__:
+    Diferente das outras variáveis, o fato de ter ou não um cartão de crédito não parece estar associado com a saída dos clientes. O p-valor é muito maior do que o nível de significância típico (por exemplo, 0.05), sugerindo que não há evidência suficiente para rejeitar a hipótese nula de independência.
+
+
+* __Membro Ativo__:
+    Existe uma associação significativa entre ser um membro ativo e a saída dos clientes. Isso implica que a atividade do cliente pode ser um fator importante na determinação do churn.
     
+Em resumo, a análise sugere que a geografia, o gênero e o status de membro ativo são fatores associados ao churn dos clientes, enquanto a posse de cartão de crédito não é. Esses resultados podem informar ações estratégicas direcionadas para a retenção de clientes, focando nas áreas onde a associação com a saída é significativa.
+
+## 02.1.3 - One Hot Encoding
+    O One Hot Encoding é um processo que transforma variáveis categóricas em uma série de colunas binárias, cada uma representando uma categoria possível. Para cada observação, apenas uma dessas colunas terá o valor 1 (indicando a presença da categoria) e todas as outras terão o valor 0 (indicando a ausência). Essa técnica permite que modelos de machine learning tratem atributos categóricos como séries numéricas, sem introduzir uma ordem arbitrária que poderia ser inferida de codificações numéricas diretas, como o Label Encoding.
+
+## 02.2.1 - Análise Exploratória das Variáveis Continuas
+    Este conjunto de gráficos boxplot compara a distribuição de várias variáveis contínuas entre os clientes que deixaram a empresa (Saida 1) e os que permaneceram (Saida 0). Cada gráfico oferece uma visão sobre como diferentes fatores numéricos se relacionam com a retenção ou churn dos clientes.
+    Os boxplots são particularmente úteis para identificar outliers e a dispersão dos dados, além de fornecer uma visão clara da mediana e dos quartis. Na modelagem preditiva, essas visualizações podem ajudar a identificar variáveis que precisam de transformação, normalização ou que possuem outliers que podem necessitar de tratamento especial.
+
+### Resultados e Conclusões:
+
+* __Pontuação de Crédito__:
+    Os clientes que deixaram a empresa (Saida 1) têm uma gama ligeiramente mais ampla e medianas mais baixas de pontuação de crédito em comparação com aqueles que ficaram (Saida 0), o que pode sugerir que os clientes com pontuações de crédito mais baixas têm uma tendência maior a churn.
+
+* __Idade__:
+    A distribuição da idade mostra que os clientes mais jovens têm uma tendência maior a deixar a empresa. A mediana e o quartil superior da idade para os churners (Saida 1) são visivelmente mais altos do que para os não churners (Saida 0), indicando que a idade pode ser um fator no churn.
+
+* __Tempo de Permanência__:
+    Este gráfico indica que os clientes com menos tempo de permanência na empresa tendem mais a churn, como evidenciado pela mediana e quartis mais baixos para Saida 1. Isso sugere que a lealdade ou a satisfação do cliente pode aumentar com o tempo.
+
+* __Saldo__:
+    Os clientes que deixaram a empresa parecem ter saldos bancários mais altos, como demonstrado pelas medianas e quartis mais altos para Saida 1. Isso pode sugerir que clientes com mais recursos financeiros podem sentir-se mais confortáveis mudando de banco ou que eles podem estar procurando por melhores opções de investimento.
+
+* __Número de Produtos__:
+    A maioria dos clientes, tanto os que ficaram quanto os que saíram, parece ter poucos produtos bancários. No entanto, a caixa para churners (Saida 1) é ligeiramente mais alta, o que pode indicar uma relação entre o número de produtos usados e a probabilidade de churn.
+
+* __Salário Estimado__:
+    As distribuições de salário estimado são bastante similares para os dois grupos, sugerindo que o salário por si só pode não ser um indicador significativo de churn.
+
+Em resumo, a análise dos dados indica que fatores como a pontuação de crédito, a idade, o tempo de permanência no banco, o saldo em conta e o número de produtos bancários estão significativamente associados ao churn dos clientes. Por outro lado, o salário estimado e a posse de cartão de crédito não apresentam uma relação significativa com a saída dos clientes.
+
+Os clientes mais propensos a deixar o banco tendem a ser mais jovens, com menor pontuação de crédito, saldos mais altos, menos tempo de associação e uma quantidade ligeiramente maior de produtos bancários. Estes insights são fundamentais para desenvolver estratégias de retenção que podem incluir programas de lealdade personalizados, ofertas baseadas em critérios geográficos e de gênero, além de serviços ajustados para melhor atender às necessidades dos clientes identificados como de maior risco de churn.
+
+Compreender as nuances dessas variáveis e como elas interagem entre si pode proporcionar uma abordagem mais granular para as iniciativas de engajamento e satisfação do cliente. A empresa deve considerar esses fatores na implementação de medidas específicas para melhorar a retenção de clientes e fortalecer a lealdade à marca.
+
+
 ## 02.2.2 - Normalização dos Dados
     A normalização é uma técnica usada para padronizar a escala dos dados numéricos na fase de pré-processamento de dados. No aprendizado de máquina, a normalização é importante porque os algoritmos geralmente são sensíveis à escala dos dados. Por exemplo, características com valores grandes podem pesar mais do que características com valores menores nos resultados finais, mesmo que as menores sejam mais significativas. O StandardScaler do Scikit-learn remove a média e escala os dados para uma variação unitária.
 
 ## 02.2.3 - Detecção e Tratamento de Outliers
-    Outliers são observações que se desviam tanto das outras observações que levantam suspeitas sobre a sua validade. A presença de outliers pode levar a um modelo com desempenho pobre porque os métodos de aprendizado de máquina são sensíveis a eles. 
+    Outliers são observações que se desviam tanto das outras observações que levantam suspeitas sobre a sua validade. A presença de outliers pode levar a um modelo com desempenho pobre porque os métodos de aprendizado de máquina são sensíveis a eles.
+    
 O método de Intervalo Interquartil (IQR) é uma técnica estatística usada para detectar outliers em um conjunto de dados. O IQR define os limites dentro dos quais a maioria dos dados de uma distribuição deve cair e é calculado como a diferença entre o terceiro quartil (Q3) e o primeiro quartil (Q1). Esses quartis são pontos de dados que dividem o conjunto de dados em quartos:
 
 Q1 é o valor médio entre o menor número e a mediana do conjunto de dados; ele separa os 25% inferiores dos dados restantes.
@@ -71,7 +123,6 @@ Diante desses resultados, pode-se inferir que não há indícios de multicolinea
 
 
 ## 02.3.1 - Visualização de Dados (Vazão de Contas)
-
 O gráfico apresenta duas categorias distintas: "Retido" e "Saiu", indicando a fidelidade dos clientes à empresa. Observamos que 79,6% dos clientes foram retidos, enquanto 20,4% dos clientes saíram ou cessaram o relacionamento com a empresa no período analisado. Este gráfico é fundamental para estabelecer um ponto de partida para a nossa análise, destacando a importância de compreender os fatores que contribuem para a vazão de clientes.
 
 A seguir, discutiremos o significado deste churn e como ele pode impactar a operação e a sustentabilidade financeira da empresa. A identificação dos padrões e tendências subjacentes aos dados de churn não só nos ajudará a entender o comportamento do cliente, mas também servirá como alicerce para a construção de modelos preditivos. Estes modelos têm como objetivo prever a probabilidade de churn de clientes individuais, permitindo que a empresa tome ações preventivas e estratégicas para melhorar a retenção.
