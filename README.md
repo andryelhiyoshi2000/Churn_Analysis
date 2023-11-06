@@ -1,3 +1,46 @@
+# 01 - Introdução
+
+## 01.1 - Contexto e Justificativa
+    No setor financeiro, a capacidade de uma empresa em reter clientes é um indicador-chave de sua sustentabilidade e crescimento a longo prazo. A rotatividade de clientes, comumente referida como "churn", é uma métrica que causa impacto direto na receita e na continuidade dos negócios. Quando clientes abandonam a empresa, não apenas a receita recorrente é afetada, mas também aumentam os custos relacionados à aquisição de novos clientes. Este estudo visa explorar como a modelagem preditiva pode ser empregada para antecipar o churn de clientes, permitindo que instituições financeiras adotem estratégias proativas para sua retenção. Dada a complexidade e a competitividade do mercado financeiro, compreender e mitigar o churn torna-se vital para manter uma base de clientes estável e para a prosperidade da empresa a longo prazo.
+    
+## 01.2 - Objetivos
+O objetivo geral deste trabalho é desenvolver um modelo preditivo capaz de identificar clientes com alta probabilidade de churn em uma instituição financeira. Os objetivos específicos incluem:
+
+* __01__: Definir o perfil dos clientes propensos a deixar a empresa, baseando-se em dados demográficos e comportamentais.
+* __02__: Transmitir insights derivados dos dados de forma clara e objetiva para os stakeholders.
+* __03__: Construir e treinar um modelo de machine learning que atinja pelo menos 80% de acurácia na previsão de churn, oferecendo uma ferramenta confiável para a tomada de decisões estratégicas.
+    
+## 01.3 - Estrutura do Trabalho
+* __Capítulo 1 (Introdução)__: Apresentação do tema, contexto do problema de churn em financeiras, e a importância da modelagem preditiva na retenção de clientes.
+
+* __Capítulo 2 (Análise de Dados)__: Detalhamento do processo de análise, incluindo pré-processamento dos dados, exploração de dados (EDA), e a seleção de características.
+
+* __Capítulo 3 (Desenvolvimento do Modelo)__: Construção do modelo preditivo, ajuste de parâmetros, validação e avaliação da performance.
+
+* __Capítulo 4 (Resultados e Conclusões)__: Síntese dos resultados, conclusões tiradas do estudo e sugestões para trabalhos futuros.
+
+# 02 - Análise dos Dados (Análise de Churn)
+    Nesta seção, nos concentramos na representação visual dos dados relacionados à retenção e ao churn de clientes. Utilizamos um gráfico de pizza para ilustrar a proporção de clientes que foram retidos e aqueles que deixaram a empresa, conhecida como a taxa de churn.
+
+## 02.1.1 - Análise Exploratória das Variáveis Categóricas
+    Continuamos nossa exploração dos dados com um foco nas variáveis categóricas. Quatro gráficos de barras representam as contagens de clientes que foram retidos (0) em comparação com aqueles que saíram (Saida 1) dentro das categorias de 'Geografia', 'Genero', 'TemCartaoDeCredito' e 'MembroAtivo'.
+
+* __Geografia__:
+    O primeiro gráfico mostra a distribuição de churn por país. Observamos que a Alemanha tem uma proporção maior de churn em comparação com a França e a Espanha. Este insight sugere que fatores regionais podem ser significativos na decisão do cliente de deixar a empresa.
+
+* __Gênero__:
+    O segundo gráfico compara churn entre gêneros. A diferença nas alturas das barras pode indicar uma tendência de churn que varia entre gêneros, o que pode ser uma consideração valiosa na personalização das estratégias de retenção.
+
+* __Tem Cartão de Crédito__:
+    A terceira visualização aborda a posse de cartão de crédito. Surpreendentemente, não parece haver uma diferença significativa no churn entre aqueles que têm e os que não têm cartão de crédito, sugerindo que este fator pode não ser tão influente na decisão de churn.
+
+* __Membro Ativo__:
+    Finalmente, o quarto gráfico destaca uma diferença notável no churn com base na atividade do cliente. Membros ativos apresentam uma taxa de retenção significativamente maior, reforçando a noção de que o engajamento do cliente é crucial para a retenção.
+
+Estas visualizações são fundamentais para nossa compreensão inicial dos padrões de dados e irão informar a seleção de características na modelagem preditiva. A discrepância nas taxas de churn entre as diferentes categorias dessas variáveis sugere áreas potenciais de foco para a retenção de clientes. No próximo estágio, iremos investigar se essas diferenças são estatisticamente significativas e como elas podem ser aplicadas ao desenvolvimento de um modelo preditivo eficaz.
+## 02.1.2 - Teste de Chi-Quadrado de Independência
+    O teste de chi-quadrado de independência compara a distribuição observada das categorias com a distribuição esperada se as duas variáveis fossem independentes. O teste calcula uma estatística de chi-quadrado que segue a distribuição chi-quadrado sob a hipótese nula de que não há associação entre as variáveis. Um p-valor baixo sugere que devemos rejeitar a hipótese nula, indicando que há uma associação estatisticamente significativa entre as variáveis.
+    
 ## 02.2.2 - Normalização dos Dados
     A normalização é uma técnica usada para padronizar a escala dos dados numéricos na fase de pré-processamento de dados. No aprendizado de máquina, a normalização é importante porque os algoritmos geralmente são sensíveis à escala dos dados. Por exemplo, características com valores grandes podem pesar mais do que características com valores menores nos resultados finais, mesmo que as menores sejam mais significativas. O StandardScaler do Scikit-learn remove a média e escala os dados para uma variação unitária.
 
